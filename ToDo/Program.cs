@@ -76,4 +76,11 @@ foreach (var tarea in tareasRealizadas)
     Console.WriteLine($"La tarea de ID {tarea.TareaID}: {tarea.Descripcion}, duracion de {tarea.Duracion} horas");
 }
 //4
+string? descripcionUsuario;
+Console.WriteLine("Ingrese una cadena de texto para buscar coincidencias entre tareas pendientes.");
+descripcionUsuario = Console.ReadLine();
+foreach (var tarea in TareasPendientes)
+{
+    tarea.Buscar(descripcionUsuario);
+}
 
