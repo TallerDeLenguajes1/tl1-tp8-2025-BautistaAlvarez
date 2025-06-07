@@ -16,12 +16,24 @@ namespace EspacioTarea
         public Tarea()
         {
         }
-        public void Buscar(string clave)
+        public static void Buscar(List<Tarea> tarea, string clave)//cuenta como metodo porque esta dentro de clase
         {
-            if (Descripcion.IndexOf(clave) != -1)
+            bool encontrado = false;
+            foreach (var t in tarea)
             {
-                
-                Console.WriteLine($"La tarea pendiente de ID {TareaID}: {Descripcion}, duracion de {Duracion} horas.");
+                if (t.Descripcion.IndexOf(clave) != -1)
+                {
+                    if (!encontrado)
+                    {
+                        encontrado = true;
+                        Console.WriteLine("Lista de tareas pendientes:");
+                    }
+                    Console.WriteLine($"La tarea pendiente de ID {t.TareaID}: {t.Descripcion}, duracion de {t.Duracion} horas.");
+                }
+            }
+            if (!encontrado)
+            {
+                Console.WriteLine("No se encontro ninguna tarea");
             }
         }
     }
